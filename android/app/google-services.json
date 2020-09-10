@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "736745761265",
+    "firebase_url": "https://lithe-realm-248515.firebaseio.com",
+    "project_id": "lithe-realm-248515",
+    "storage_bucket": "lithe-realm-248515.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736745761265:android:33a54cb2522b343947fc50",
+        "android_client_info": {
+          "package_name": "com.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736745761265-3t2lb33k6ejpis6fn2j8mnrav6b8tvl1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAj0MqqfUfDO646dpLtGuAHhWudeHHLv2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736745761265-3t2lb33k6ejpis6fn2j8mnrav6b8tvl1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
