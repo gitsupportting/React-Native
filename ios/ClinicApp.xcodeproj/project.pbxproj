@@ -15,14 +15,14 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* testTests.m */; };
-		5B1A60C0C9F8B7E731CCD701 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F22E0E553106F776BBE6CF /* libPods-test.a */; };
-		60952836D8A0F7D1489AB1FE /* libPods-test-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09187782B88F782EE3E8D87A /* libPods-test-tvOS.a */; };
+		3F50036064872BCFC0D6A741 /* libPods-ClinicApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE9ED23A044A24C69145B8A1 /* libPods-ClinicApp.a */; };
+		512EAB37CDC8F3F4F71AF983 /* libPods-ClinicApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A49117C74A5FD90F31867E89 /* libPods-ClinicApp-tvOSTests.a */; };
+		5A16FBAE21D3D89D00E147AF /* libPods-ClinicApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 378EF7C72FDACA01E0C6911D /* libPods-ClinicApp-tvOS.a */; };
 		6A04815924ED8EEC00AE5F47 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A04815824ED8EEC00AE5F47 /* Lato-Light.ttf */; };
 		6A04815B24ED8EF500AE5F47 /* NunitoSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A04815A24ED8EF400AE5F47 /* NunitoSans-Light.ttf */; };
 		6ACA627A24FC8F7000D80CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA627924FC8F7000D80CC8 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9102D1FCF5FEEF7E82A93609 /* libPods-test-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F914931BD8596369D04E7D /* libPods-test-tvOSTests.a */; };
-		9C65EEE5758D71D65181875F /* libPods-test-testTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4B1132C2FF3E7050570008 /* libPods-test-testTests.a */; };
+		FE08559E98CCD5C83A8E3CA8 /* libPods-ClinicApp-ClinicAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F562251F2AC2B73D8D648 /* libPods-ClinicApp-ClinicAppTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* testTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testTests.m; sourceTree = "<group>"; };
 		06CB34CACD0AFD187A3FB6BA /* Pods-test-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-tvOS.release.xcconfig"; path = "Target Support Files/Pods-test-tvOS/Pods-test-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		09187782B88F782EE3E8D87A /* libPods-test-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07865B34DCF6E5F9BE1AFCAC /* Pods-ClinicApp-ClinicAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp-ClinicAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ClinicApp-ClinicAppTests/Pods-ClinicApp-ClinicAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Laser Dental Center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Laser Dental Center.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = test/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = test/AppDelegate.m; sourceTree = "<group>"; };
@@ -58,7 +58,10 @@
 		1CFD48A3E1AA782A4AA34A21 /* Pods-test-testTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-testTests.release.xcconfig"; path = "Target Support Files/Pods-test-testTests/Pods-test-testTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* ClinicApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ClinicApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ClinicApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ClinicApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		36F914931BD8596369D04E7D /* libPods-test-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D4A5821E86F4EA14EAB283A /* Pods-ClinicApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp.debug.xcconfig"; path = "Target Support Files/Pods-ClinicApp/Pods-ClinicApp.debug.xcconfig"; sourceTree = "<group>"; };
+		36C3749291FC6D3154697C43 /* Pods-ClinicApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp.release.xcconfig"; path = "Target Support Files/Pods-ClinicApp/Pods-ClinicApp.release.xcconfig"; sourceTree = "<group>"; };
+		378EF7C72FDACA01E0C6911D /* libPods-ClinicApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ClinicApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5F562251F2AC2B73D8D648 /* libPods-ClinicApp-ClinicAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ClinicApp-ClinicAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		425949DC4F328A05F2E98282 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 		6A04815824ED8EEC00AE5F47 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		6A04815A24ED8EF400AE5F47 /* NunitoSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Light.ttf"; sourceTree = "<group>"; };
@@ -67,13 +70,18 @@
 		75C1C3E2BA5E9EF38489DA9D /* Pods-test-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-test-tvOSTests/Pods-test-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8071ED2D24FDCCA20015FBDE /* Laser Dental Center.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Laser Dental Center.entitlements"; path = "test/Laser Dental Center.entitlements"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = test/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8F4B1132C2FF3E7050570008 /* libPods-test-testTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test-testTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F6785D3F130E830F8A4F37 /* Pods-ClinicApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ClinicApp-tvOSTests/Pods-ClinicApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8BD3C39197C2D22CDC8181E6 /* Pods-ClinicApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ClinicApp-tvOS/Pods-ClinicApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		97F1C3A194E3E8E1906F61BB /* Pods-test-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-test-tvOSTests/Pods-test-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A49117C74A5FD90F31867E89 /* libPods-ClinicApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ClinicApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8E47B74C50240913AD1CF3 /* Pods-test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.release.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.release.xcconfig"; sourceTree = "<group>"; };
-		B2F22E0E553106F776BBE6CF /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B02E82A82BA8621C0FC2D200 /* Pods-ClinicApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ClinicApp-tvOS/Pods-ClinicApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BF3358F3BC81F8663F7DA7EB /* Pods-ClinicApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ClinicApp-tvOSTests/Pods-ClinicApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EE9ED23A044A24C69145B8A1 /* libPods-ClinicApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ClinicApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7E523B87A28E2762134F1A0 /* Pods-test-testTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-testTests.debug.xcconfig"; path = "Target Support Files/Pods-test-testTests/Pods-test-testTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF81A2A62C83303DAA3B2EB3 /* Pods-ClinicApp-ClinicAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClinicApp-ClinicAppTests.release.xcconfig"; path = "Target Support Files/Pods-ClinicApp-ClinicAppTests/Pods-ClinicApp-ClinicAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C65EEE5758D71D65181875F /* libPods-test-testTests.a in Frameworks */,
+				FE08559E98CCD5C83A8E3CA8 /* libPods-ClinicApp-ClinicAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B1A60C0C9F8B7E731CCD701 /* libPods-test.a in Frameworks */,
+				3F50036064872BCFC0D6A741 /* libPods-ClinicApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60952836D8A0F7D1489AB1FE /* libPods-test-tvOS.a in Frameworks */,
+				5A16FBAE21D3D89D00E147AF /* libPods-ClinicApp-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9102D1FCF5FEEF7E82A93609 /* libPods-test-tvOSTests.a in Frameworks */,
+				512EAB37CDC8F3F4F71AF983 /* libPods-ClinicApp-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +148,14 @@
 				06CB34CACD0AFD187A3FB6BA /* Pods-test-tvOS.release.xcconfig */,
 				97F1C3A194E3E8E1906F61BB /* Pods-test-tvOSTests.debug.xcconfig */,
 				75C1C3E2BA5E9EF38489DA9D /* Pods-test-tvOSTests.release.xcconfig */,
+				2D4A5821E86F4EA14EAB283A /* Pods-ClinicApp.debug.xcconfig */,
+				36C3749291FC6D3154697C43 /* Pods-ClinicApp.release.xcconfig */,
+				07865B34DCF6E5F9BE1AFCAC /* Pods-ClinicApp-ClinicAppTests.debug.xcconfig */,
+				FF81A2A62C83303DAA3B2EB3 /* Pods-ClinicApp-ClinicAppTests.release.xcconfig */,
+				B02E82A82BA8621C0FC2D200 /* Pods-ClinicApp-tvOS.debug.xcconfig */,
+				8BD3C39197C2D22CDC8181E6 /* Pods-ClinicApp-tvOS.release.xcconfig */,
+				84F6785D3F130E830F8A4F37 /* Pods-ClinicApp-tvOSTests.debug.xcconfig */,
+				BF3358F3BC81F8663F7DA7EB /* Pods-ClinicApp-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -165,10 +181,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				B2F22E0E553106F776BBE6CF /* libPods-test.a */,
-				8F4B1132C2FF3E7050570008 /* libPods-test-testTests.a */,
-				09187782B88F782EE3E8D87A /* libPods-test-tvOS.a */,
-				36F914931BD8596369D04E7D /* libPods-test-tvOSTests.a */,
+				EE9ED23A044A24C69145B8A1 /* libPods-ClinicApp.a */,
+				3B5F562251F2AC2B73D8D648 /* libPods-ClinicApp-ClinicAppTests.a */,
+				378EF7C72FDACA01E0C6911D /* libPods-ClinicApp-tvOS.a */,
+				A49117C74A5FD90F31867E89 /* libPods-ClinicApp-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -420,7 +436,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-test/Pods-test-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ClinicApp/Pods-ClinicApp-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -461,7 +477,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-test/Pods-test-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ClinicApp/Pods-ClinicApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6A27628259EB2DBE30B4E5AD /* [CP] Check Pods Manifest.lock */ = {
@@ -479,7 +495,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-test-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ClinicApp-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -502,7 +518,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-test-testTests/Pods-test-testTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ClinicApp-ClinicAppTests/Pods-ClinicApp-ClinicAppTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -543,7 +559,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-test-testTests/Pods-test-testTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ClinicApp-ClinicAppTests/Pods-ClinicApp-ClinicAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B743B5CDD45ABC272E6CBAC0 /* [CP] Check Pods Manifest.lock */ = {
@@ -561,7 +577,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-test-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ClinicApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -583,7 +599,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-test-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ClinicApp-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -605,7 +621,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-test-testTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ClinicApp-ClinicAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -705,7 +721,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7E523B87A28E2762134F1A0 /* Pods-test-testTests.debug.xcconfig */;
+			baseConfigurationReference = 07865B34DCF6E5F9BE1AFCAC /* Pods-ClinicApp-ClinicAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -728,7 +744,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1CFD48A3E1AA782A4AA34A21 /* Pods-test-testTests.release.xcconfig */;
+			baseConfigurationReference = FF81A2A62C83303DAA3B2EB3 /* Pods-ClinicApp-ClinicAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -748,7 +764,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 425949DC4F328A05F2E98282 /* Pods-test.debug.xcconfig */;
+			baseConfigurationReference = 2D4A5821E86F4EA14EAB283A /* Pods-ClinicApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -773,7 +789,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC8E47B74C50240913AD1CF3 /* Pods-test.release.xcconfig */;
+			baseConfigurationReference = 36C3749291FC6D3154697C43 /* Pods-ClinicApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -796,7 +812,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D3F757674F7A5275733C57C /* Pods-test-tvOS.debug.xcconfig */;
+			baseConfigurationReference = B02E82A82BA8621C0FC2D200 /* Pods-ClinicApp-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -824,7 +840,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 06CB34CACD0AFD187A3FB6BA /* Pods-test-tvOS.release.xcconfig */;
+			baseConfigurationReference = 8BD3C39197C2D22CDC8181E6 /* Pods-ClinicApp-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -852,7 +868,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97F1C3A194E3E8E1906F61BB /* Pods-test-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 84F6785D3F130E830F8A4F37 /* Pods-ClinicApp-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -879,7 +895,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75C1C3E2BA5E9EF38489DA9D /* Pods-test-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = BF3358F3BC81F8663F7DA7EB /* Pods-ClinicApp-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

@@ -204,7 +204,7 @@ export default class CheckedInScreen extends React.Component {
             source={{uri: logoBase64}} 
           />
           <View style={[s.splitLine, s.mv15]}></View>
-          <View style={[styles.itemWrap, s.mb15]}>
+          <View style={[styles.itemWrap]}>
             <Text style={[s.ft15RegularBlack, s.flex30]}>Patient Name</Text>
             <TextInput
               onChangeText={patient_full_name =>
@@ -212,7 +212,7 @@ export default class CheckedInScreen extends React.Component {
               }
               autoCapitalize='none'
               value={this.state.patient_full_name}
-              style={[styles.inputText, s.flex60]}
+              style={[styles.inputText, styles.w60]}
             />
           </View>
           <View style={[s.splitLine, s.mb15]}></View>
@@ -222,7 +222,7 @@ export default class CheckedInScreen extends React.Component {
               onChangeText={patient_dob => this.setState({patient_dob})}
               autoCapitalize='none'
               value={this.state.patient_dob}
-              style={[styles.inputText, s.flex60]}
+              style={[styles.inputText, styles.w60]}
             />
           </View>
           <View style={[s.splitLine, s.mb15]}></View>
@@ -342,7 +342,7 @@ export default class CheckedInScreen extends React.Component {
                   }
                   autoCapitalize='none'
                   value={this.state.covid_travel_countries_visited}
-                  style={[styles.inputText, s.flex70]}
+                  style={[styles.inputText, styles.w30]}
                 />
               </View>
             ) : (
@@ -614,7 +614,6 @@ const styles = StyleSheet.create({
   inputText: {
     borderRadius: 8,
     paddingLeft: 10,
-    width: '100%',
     fontFamily: 'NunitoSans-Light',
     fontStyle: 'normal',
     fontWeight: 'normal',
@@ -623,6 +622,12 @@ const styles = StyleSheet.create({
     color: '#173147',
     backgroundColor: '#fff',
     height: 40
+  },
+  w60: {
+    width: '70%'
+  },
+  w30: {
+    width: '30%'
   },
   itemWrap: {
     flexDirection: 'row',

@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     color: '#173147',
     backgroundColor: '#fff',
-    // height: 30,
+    height: 40,
   },
   inputText_: {
     borderRadius: 8,
