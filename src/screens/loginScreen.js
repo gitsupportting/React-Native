@@ -23,7 +23,10 @@ export default class LoginScreen extends React.Component {
       auth()
         .signInWithPhoneNumber(this.state.phone)
         .then(confirmResult => {
-          this.setState({ confirmResult }, ()=>{
+          this.setState({ 
+            confirmResult: confirmResult,
+            isLoading: false
+          }, ()=>{
             this.props.navigation.navigate('Confirm', {phone: this.state.phone, confirmResult: this.state.confirmResult, fromLogin: true});
           });
         })

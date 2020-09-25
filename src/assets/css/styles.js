@@ -202,6 +202,30 @@ module.exports = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center'
   },
+  
+  btnActive: {
+    height: 50,
+    backgroundColor: '#173147',
+    borderRadius: 8,
+    borderColor: '#173147',
+    borderWidth: 1,
+    marginVertical: 30,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  activeTxt: {
+    fontFamily: 'Lato-Light',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: 14,
+    lineHeight: 17,
+    color: '#FFFFFF',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
 
   ft20Black: {
     fontFamily: 'Lato-Light',

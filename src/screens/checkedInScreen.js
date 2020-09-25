@@ -187,17 +187,6 @@ export default class CheckedInScreen extends React.Component {
             )}
           </View>
         </Header>
-        {/* <Container>
-        <WebView 
-          ref={(webView) => (this.webView = webView)}
-          source={{ uri: 'http://hafez.me/test/form.html' }} 
-          style={{marginTop: 1}}
-          onMessage = {event => {
-              console.log("test Post Message");
-              this.onHome();
-          }}
-          onLoadEnd= { this.addData() }/>
-      </Container> */}
         <Content style={s.mainContainer}>
           <Image 
             style={[s.ImageIconStyle_logo, styles.alignCenter]}
