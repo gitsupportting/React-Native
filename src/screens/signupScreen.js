@@ -1,5 +1,6 @@
 import React from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
+import DatePicker from 'react-native-datepicker'
 import { View, TouchableOpacity, StyleSheet, TextInput, Text, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import auth from '@react-native-firebase/auth';
 var s = require('../assets/css/styles');
@@ -148,12 +149,32 @@ export default class SignupScreen extends React.Component {
             style={ styles.inputText }
           />
           <Text style={[s.ft12Black, s.mv15, styles.textLeft]}>Date of Birth</Text>
-          <TextInput
-            placeholder="BirthDay"
-            onChangeText={(birthday) => this.setState({ birthday })}
-            autoCapitalize='none'
-            value={this.state.birthday}
-            style={ styles.inputText }
+          <DatePicker
+            style={{width: '100%'}}
+            date={this.state.birthday}
+            mode="date"
+            placeholder="select birthday"
+            format="YYYY-MM-DD"
+            confirmBtnText="Confirm"
+            cancelBtnText="Cancel"
+            customStyles={{
+              dateInput: {
+                borderRadius: 8,
+                borderWidth: 0,
+                borderBottomColor: '#E0E0E0',
+                borderBottomWidth: 1,
+                paddingLeft:10,
+                width: '100%',
+                fontFamily: 'NunitoSans-Light',
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: 14,
+                lineHeight: 19,
+                color: '#173147',
+                backgroundColor: '#fff',
+              }
+            }}
+            onDateChange={(birthday) => {this.setState({birthday: birthday})}}
           />
           <Text style={[s.ft12Black, s.mv15, styles.textLeft]}>Phone</Text>
           <TextInput

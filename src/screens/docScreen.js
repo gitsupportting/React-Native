@@ -87,6 +87,10 @@ export default class DocScreen extends React.Component {
     this.props.navigation.navigate('Doc', {});
   }
 
+  _getDirections = () => {
+
+  }
+
   render() {
     return (
       <Container style={s.container}>
@@ -96,7 +100,7 @@ export default class DocScreen extends React.Component {
               style={s.checkInEm}
               activeOpacity={1}>
             </TouchableOpacity>
-            <Text style={s.title}>Clinic Name</Text>
+            <Text style={s.title}>Laguna Dental Center</Text>
             <TouchableOpacity
               style={s.moreIcon}
               onPress={() => this.setState({ active: !this.state.active })}
@@ -122,6 +126,14 @@ export default class DocScreen extends React.Component {
           </View>            
         </Header>
         <Content style={s.margin20}>
+          <View style={[styles.textCenter, s.w100]}>
+            <TouchableOpacity
+              style={[styles.btnActive]}
+              onPress={()=>this.onWeb()}
+              activeOpacity={1}>
+              <Text style={s.activeTxt}>New Patient Form</Text>
+            </TouchableOpacity>
+          </View>
           <View>
           {this.state.isMapReady && <MapView
               initialRegion={this.state.region}
@@ -142,28 +154,47 @@ export default class DocScreen extends React.Component {
             >
             </MapView>}
           </View>
-          <Text style={[s.ft20Black, styles.mb15]}>Clinic Name</Text>
+          <Text style={[s.ft20Black, styles.mb15]}>Laguna Dental Center</Text>
           <Text style={s.ft14300Gray}>
-            0000 Culver Dr, Irvine #400 (000) 000-000 
+            24881 Alicia Pkwy, Suite H Laguna Hills, CA 92653 
           </Text>
           <Text style={s.ft14300Gray}>
-            Description about the clinic here. Description about the clinic here. Description about the clinic here. Description about
+          (949) 707-5273 
+          </Text>
+          <View>
+          <Button
+          onPress={this._getDirections}
+          title="Get Directions" />
+          </View>
+          <Text style={s.ft14300Gray}>
+          Our team of experienced and professional dentists brings over 20 years of experience in dental care to enhance your oral health. 
           </Text>
           <Text style={[s.title, styles.mv15]}>Office Hours</Text>
           <View style={[s.spaceBetween, s.mb5]}>
-            <Text style={[s.ft14300Gray, s.flex30]}>Man-Fri</Text>
+            <Text style={[s.ft14300Gray, s.flex30]}>Monday</Text>
             <Text style={[s.ft14300Gray, s.flex70]}>8am-5pm</Text>
           </View>
           <View style={[s.spaceBetween, s.mb5]}>
-            <Text style={[s.ft14300Gray, s.flex30]}>Man-Fri</Text>
+            <Text style={[s.ft14300Gray, s.flex30]}>Tuesday</Text>
             <Text style={[s.ft14300Gray, s.flex70]}>8am-5pm</Text>
           </View>
           <View style={[s.spaceBetween, s.mb5]}>
-            <Text style={[s.ft14300Gray, s.flex30]}>Man-Fri</Text>
+            <Text style={[s.ft14300Gray, s.flex30]}>Wednesday</Text>
             <Text style={[s.ft14300Gray, s.flex70]}>8am-5pm</Text>
           </View>
-          <Text style={[s.title, styles.mv15]}>Dr. Doctor</Text>
-          <Text style={s.ft14300Gray}>Description about the clinic here.</Text>
+          <View style={[s.spaceBetween, s.mb5]}>
+            <Text style={[s.ft14300Gray, s.flex30]}>Thursday</Text>
+            <Text style={[s.ft14300Gray, s.flex70]}>8am-5pm</Text>
+          </View>
+          <View style={[s.spaceBetween, s.mb5]}>
+            <Text style={[s.ft14300Gray, s.flex30]}>Friday</Text>
+            <Text style={[s.ft14300Gray, s.flex70]}>8am-5pm</Text>
+          </View>          
+
+          <Text style={[s.title, styles.mv15]}>Dr. Payam Ataii</Text>
+          <Text style={s.ft14300Gray}>Expert Dentist Dr. Payam C. Ataii has been treating patients with over two decades of clinical experience. His experience covers a wide range of dentistry such as: oral surgery, endodontics, pedodontics, periodontics, cosmetic dentistry, and most recently Laser Dentistry.</Text>
+          <Text style={[s.title, styles.mv15]}>Dr. Jeremy Owyoung</Text>
+          <Text style={s.ft14300Gray}>Dr. Owyoung Dr. Jeremy Owyoung graduated from the University of California, San Diego (UCSD) with a Bachelor of Science degree in Biochemistry / Cell Biology and Management Science. He received his Doctor of Dental Surgery from the University of Southern California School of Dentistry (USC).</Text>
         </Content>
         <Footer>
           <FooterTab style={s.footerContent}>
@@ -195,5 +226,20 @@ const styles = StyleSheet.create({
   mv15: {
     marginVertical: 15,
   },
-
+  textCenter: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  btnActive: {
+    height: 40,
+    backgroundColor: '#173147',
+    borderRadius: 8,
+    borderColor: '#173147',
+    borderWidth: 1,
+    marginBottom: 20,
+    width: '50%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
