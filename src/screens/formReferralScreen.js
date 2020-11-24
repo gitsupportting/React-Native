@@ -5,9 +5,9 @@ import {
   Image,
   StyleSheet,
   TextInput,
-  Text
+  Text,
+  KeyboardAvoidingView
 } from 'react-native'
-import Moment from 'moment'
 import AsyncStorage from '@react-native-community/async-storage'
 import {Container, Header, Content} from 'native-base'
 import backBtn from '../assets/icons/backBtn.png'
@@ -20,17 +20,21 @@ export default class FormReferralScreen extends React.Component {
   }
 
   init = () => {
-    let today = new Date()
-    today = Moment(today)
-      .format('MM/DD/YYYY')
-      .toString()
+    
     this.state = {
-      active: false,
-      clinic_id: 74,
-      form_fill_date: today,
-      patient_dob: '',
-      covid_fever_past_48_hours: 'YES',
+      patient_referrer : "",
+      friend: "",
+      relative: "",
+      DentalOffice: "",
+      YellowPages: "",
+      Newspaper: "",
+      School: "",
+      Work: "",
+      patient_referrer_name : "",
     }
+    AsyncStorage.getItem('formData').then(res => {
+      this.formData = JSON.parse(res);
+    })  
   }
 
   onBack =()=> {
@@ -38,12 +42,42 @@ export default class FormReferralScreen extends React.Component {
   }
 
   onNext =()=> {
-    this.props.navigation.navigate('FormSpouse');
+
+    const {patient_referrer_name} = this.state;
+
+    let patient_referrer = "";
+    if (this.state.friend != "") {
+      patient_referrer += this.state.friend + " ";
+    }
+    if (this.state.relative != "") {
+      patient_referrer += this.state.relative + " ";
+    }
+    if (this.state.DentalOffice != "") {
+      patient_referrer += this.state.DentalOffice + " ";
+    }
+    if (this.state.YellowPages != "") {
+      patient_referrer += this.state.YellowPages + " ";
+    }
+    if (this.state.Newspaper != "") {
+      patient_referrer += this.state.Newspaper + " ";
+    }
+    if (this.state.School != "") {
+      patient_referrer += this.state.School + " ";
+    }
+    if (this.state.Work != "") {
+      patient_referrer += this.state.Work + " ";
+    }
+    this.formData.patient_referrer = patient_referrer;
+    this.formData.patient_referrer_name = patient_referrer_name;
+
+    AsyncStorage.setItem('formData', JSON.stringify(this.formData)).then(() => {
+      this.props.navigation.navigate('FormSpouse')
+    })
   } 
 
   render () {
     return (
-      <Container style={s.container}>
+      <KeyboardAvoidingView style={s.container}>
         <Header
           style={{
             justifyContent: 'flex-start',
@@ -67,24 +101,24 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.friend == 'friend'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({friend: 'friend'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.friend == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({friend: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
@@ -99,24 +133,24 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.relative == 'relative'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({relative: 'relative'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.relative == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({relative: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
@@ -131,24 +165,24 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.DentalOffice == 'DentalOffice'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({DentalOffice: 'DentalOffice'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.DentalOffice == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({DentalOffice: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
@@ -163,24 +197,24 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.YellowPages == 'YellowPages'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({YellowPages: 'YellowPages'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.YellowPages == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({YellowPages: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
@@ -195,24 +229,24 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.Newspaper == 'Newspaper'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({Newspaper: 'Newspaper'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.Newspaper == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({Newspaper: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
@@ -227,24 +261,24 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.School == 'School'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({School: 'School'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.School == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({School: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
@@ -259,31 +293,31 @@ export default class FormReferralScreen extends React.Component {
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'YES'
+                  this.state.Work == 'Work'
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'YES'})
+                  this.setState({Work: 'Work'})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>Yes</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={
-                  this.state.covid_fever_past_48_hours == 'NO'
+                  this.state.Work == ''
                     ? styles.btnOptionActive
                     : styles.btnOptionDeactive
                 }
                 onPress={() => {
-                  this.setState({covid_fever_past_48_hours: 'NO'})
+                  this.setState({Work: ''})
                 }}
                 activeOpacity={1}>
                 <Text style={styles.btnTxt}>No</Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={[s.splitLine, s.mb20]}></View>
+          {/* <View style={[s.splitLine, s.mb20]}></View>
           <View style={[styles.itemWrap]}>
             <Text style={[s.ft15RegularBlack, s.flex40]}>Other</Text>
             <TextInput
@@ -294,15 +328,15 @@ export default class FormReferralScreen extends React.Component {
               value={this.state.patient_full_name}
               style={[styles.inputText, styles.w50]}
             />
-          </View>
+          </View> */}
           <View style={s.mb20}>
             <Text style={[s.ft15RegularBlack, s.mb15]}>Name of person or office referring you to our practice:</Text>
             <TextInput
-              onChangeText={patient_full_name =>
-                this.setState({patient_full_name})
+              onChangeText={patient_referrer_name =>
+                this.setState({patient_referrer_name})
               }
               autoCapitalize='none'
-              value={this.state.patient_full_name}
+              value={this.state.patient_referrer_name}
               style={[styles.inputText]}
             />
           </View>
@@ -313,7 +347,7 @@ export default class FormReferralScreen extends React.Component {
             <Text style={s.activeTxt}>Next</Text>
           </TouchableOpacity>
         </Content>
-      </Container>
+      </KeyboardAvoidingView>
     )
   }
 }
