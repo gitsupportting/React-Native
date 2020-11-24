@@ -24,6 +24,9 @@ export default class HomeScreen extends React.Component {
   componentDidAppear() {
     console.log("didAppear");
   }
+  // componentWillUnmount() {
+  //   BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+  // }
 
   handleBackButtonClick = () => {
     // this.props.navigation.goBack(null);
