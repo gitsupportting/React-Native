@@ -45,10 +45,13 @@ const Navigation = createStackNavigator({
     screen: checkedInScreen
   },
   Home: {
-    screen: homeScreen
+    screen: homeScreen,
+    navigationOptions: {
+      gestureEnabled: false,
+    },
   },
   Announce: {
-    screen: announceScreen
+    screen: announceScreen,    
   },
   Calendar: {
     screen: calendarScreen
@@ -82,6 +85,7 @@ const Navigation = createStackNavigator({
   }
 }, {
   initialRouteName: 'Splash',
+  // initialRouteName: 'FormConsent',
   headerMode: 'none'
 });
 

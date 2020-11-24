@@ -329,7 +329,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = X6FC2AAKCP;
+						DevelopmentTeam = FB39T6JWJY;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -770,7 +770,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "test/Laser Dental Center.entitlements";
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = X6FC2AAKCP;
+				DEVELOPMENT_TEAM = FB39T6JWJY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -779,7 +779,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.4smile.clinic.laserdentalcenter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kindertales.iOSparents;
 				PRODUCT_NAME = "Laser Dental Center";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -795,7 +795,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "test/Laser Dental Center.entitlements";
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = X6FC2AAKCP;
+				DEVELOPMENT_TEAM = FB39T6JWJY;
 				INFOPLIST_FILE = test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -803,7 +803,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.4smile.clinic.laserdentalcenter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kindertales.iOSparents;
 				PRODUCT_NAME = "Laser Dental Center";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

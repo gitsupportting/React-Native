@@ -5,7 +5,8 @@ import {
   Image,
   StyleSheet,
   TextInput,
-  Text
+  Text,
+  KeyboardAvoidingView
 } from 'react-native'
 import Moment from 'moment'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -70,7 +71,7 @@ export default class FormConsentScreen extends React.Component {
 
   render () {
     return (
-      <Container style={s.container}>
+      <KeyboardAvoidingView style={s.container}>
         <Header
           style={{
             justifyContent: 'flex-start',
@@ -169,7 +170,7 @@ export default class FormConsentScreen extends React.Component {
             <Text style={s.activeTxt}>Submit</Text>
           </TouchableOpacity>
         </Content>
-      </Container>
+      </KeyboardAvoidingView>
     )
   }
 }
