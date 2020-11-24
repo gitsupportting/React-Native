@@ -36,6 +36,7 @@
     "react-native-open-maps": "^0.3.5",
     "react-native-safe-area-context": "^3.1.4",
     "react-native-screens": "^2.10.1",
+    "react-native-super-grid": "^4.0.3",
     "react-native-vector-icons": "^7.1.0",
     "react-native-webview": "^10.10.2",
     "react-navigation": "^4.4.0",
