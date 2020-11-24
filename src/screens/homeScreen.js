@@ -70,8 +70,10 @@ export default class HomeScreen extends React.Component {
         <Header style={s.headerContent}>
           <View style={s.spaceBetween}>
             <TouchableOpacity
-              style={s.checkInEm}
+              style={s.checkIn}
+              onPress={()=>this.onCheckIn()}
               activeOpacity={1}>
+              <Text style={s.title}>CheckedIn</Text>
             </TouchableOpacity>
             <Text style={s.title}>Home</Text>
             <Button onPress={this.onProfile} style={s.checkInEm, {backgroundColor: "#FFFFFF"}}>
