@@ -226,7 +226,15 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
   },
-
+  ft20BoldWhite: {
+    fontFamily: 'Lato-Light',
+    fontWeight: 'bold',
+    fontSize: 20,
+    lineHeight: 23,
+    color: '#FFFFFF',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
   ft20Black: {
     fontFamily: 'Lato-Light',
     fontStyle: 'normal',

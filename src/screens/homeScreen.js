@@ -1,8 +1,10 @@
 import React from 'react';
 import { Container, Header, Footer, FooterTab, Button, Text, Content } from 'native-base';
-import { View, TouchableOpacity, StyleSheet, Image, BackHandler } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Image, BackHandler, Dimensions, ImageBackground } from 'react-native';
 import Icon from "react-native-feather1s"
 import { FlatGrid } from 'react-native-super-grid';
+let deviceHeight = Dimensions.get('window').height;
+let deviceWidth = Dimensions.get('window').width;
 var s = require('../assets/css/styles');
 
 export default class HomeScreen extends React.Component {
@@ -46,14 +48,19 @@ export default class HomeScreen extends React.Component {
     this.props.navigation.navigate('Doc', {});
   }
 
+  onProfile =()=> {
+    this.props.navigation.navigate('ProfileDetail')
+  }
+
   renderItem = (data) => {
     return (
-      <TouchableOpacity style={[styles.card, s.shadowStyle]} onPress={this.onDetail}>
-        {/* <Image resizeMode="contain" style={{width: 100, height: 100, borderRadius: 8}} source={{uri: imageURL + data.item.image_path}} /> */}
-        <View style={{flex: 1, paddingLeft: 20}}>
-          <Text style={[s.ft14BoldBlack, s.mb5]}>hi</Text>
-        </View>
-      </TouchableOpacity>
+      <ImageBackground style={ styles.imgBackground } 
+          resizeMode='cover' 
+          source={require('../assets/images/image2.png')}>
+        <TouchableOpacity onPress={this.onDetail} style={{width: '100%', height: '100%', minHeight: deviceWidth*0.4, flexDirection: 'row', alignItems:'center', justifyContent: 'center'}}>
+          <Text style={[s.ft20BoldWhite]}>{data.item}</Text>
+        </TouchableOpacity>
+      </ImageBackground>      
     )
   }
 
@@ -61,18 +68,26 @@ export default class HomeScreen extends React.Component {
     return (
       <Container style={s.container}>
         <Header style={s.headerContent}>
-          
+          <View style={s.spaceBetween}>
+            <TouchableOpacity
+              style={s.checkInEm}
+              activeOpacity={1}>
+            </TouchableOpacity>
+            <Text style={s.title}>Home</Text>
+            <Button onPress={this.onProfile} style={s.checkInEm, {backgroundColor: "#FFFFFF"}}>
+              <Icon name="user" size={30} />
+            </Button>
+          </View>      
         </Header>
          <Content style={s.mainContainer}>
           <FlatGrid
-            itemDimension={130}
-            data={[1,2,3,4,5,6]}
+            itemDimension={deviceWidth*0.4}
+            data={['Forms', 'Tips', 'Articles', 'Specials', 'Contact The Office', 'Review', 'For Kids', 'Finance']}
             renderItem={(item) => this.renderItem(item)}
           />
         </Content>
         <Footer>
-          <FooterTab style={s.footerContent}>
-            
+          <FooterTab style={s.footerContent}>            
             <Button onPress={this.onHome}>
               <Icon name="home" size={30} color={'rgba(37,175,217, 1)'} />
             </Button>
@@ -103,20 +118,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 30,
   },
-  card: {
-    padding: 15,
-    borderRadius: 8,    
-    marginBottom: 18,
-    flexDirection: 'row',
-    width: '100%', 
-    backgroundColor: '#fff',
-    shadowColor: "rgba(157, 157, 157, 0.2);",
-    shadowOffset: {
-      width: 1,
-      height: 5
-    },
-    shadowRadius: 8,
-    shadowOpacity: 1.0,
-    elevation: 2
+  imgBackground: {
+    width: '100%',
+    height: '100%',
+    flex: 1 
   },
 })
