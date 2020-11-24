@@ -20,6 +20,7 @@
 		5A16FBAE21D3D89D00E147AF /* libPods-ClinicApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 378EF7C72FDACA01E0C6911D /* libPods-ClinicApp-tvOS.a */; };
 		6A04815924ED8EEC00AE5F47 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A04815824ED8EEC00AE5F47 /* Lato-Light.ttf */; };
 		6A04815B24ED8EF500AE5F47 /* NunitoSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A04815A24ED8EF400AE5F47 /* NunitoSans-Light.ttf */; };
+		6A7C29DE256D7A4000E34366 /* feather1s.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A7C29DD256D791C00E34366 /* feather1s.ttf */; };
 		6ACA627A24FC8F7000D80CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6ACA627924FC8F7000D80CC8 /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FE08559E98CCD5C83A8E3CA8 /* libPods-ClinicApp-ClinicAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F562251F2AC2B73D8D648 /* libPods-ClinicApp-ClinicAppTests.a */; };
@@ -65,6 +66,7 @@
 		425949DC4F328A05F2E98282 /* Pods-test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.debug.xcconfig"; path = "Target Support Files/Pods-test/Pods-test.debug.xcconfig"; sourceTree = "<group>"; };
 		6A04815824ED8EEC00AE5F47 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		6A04815A24ED8EF400AE5F47 /* NunitoSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Light.ttf"; sourceTree = "<group>"; };
+		6A7C29DD256D791C00E34366 /* feather1s.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = feather1s.ttf; sourceTree = "<group>"; };
 		6ACA627924FC8F7000D80CC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D3F757674F7A5275733C57C /* Pods-test-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-test-tvOS/Pods-test-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		75C1C3E2BA5E9EF38489DA9D /* Pods-test-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-test-tvOSTests/Pods-test-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		6A04815324ED8A5E00AE5F47 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6A7C29DD256D791C00E34366 /* feather1s.ttf */,
 				6A04815A24ED8EF400AE5F47 /* NunitoSans-Light.ttf */,
 				6A04815824ED8EEC00AE5F47 /* Lato-Light.ttf */,
 			);
@@ -378,6 +381,7 @@
 			files = (
 				6A04815924ED8EEC00AE5F47 /* Lato-Light.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				6A7C29DE256D7A4000E34366 /* feather1s.ttf in Resources */,
 				6ACA627A24FC8F7000D80CC8 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				6A04815B24ED8EF500AE5F47 /* NunitoSans-Light.ttf in Resources */,
