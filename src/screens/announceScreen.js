@@ -2,12 +2,9 @@ import React from 'react';
 import { Container, Header, Footer, FooterTab, Button, Content, Text } from 'native-base';
 import { View, TouchableOpacity, StyleSheet, Image, ActivityIndicator, FlatList } from 'react-native';
 var s = require('../assets/css/styles');
-import more from '../assets/icons/more.png';
-import home from '../assets/icons/home.png';
-import announce1 from '../assets/icons/announce1.png';
-import calendar from '../assets/icons/calendar.png';
-import chat from '../assets/icons/chat.png';
-import doc from '../assets/icons/doc.png';
+var ClinicInfo = require('../config/ClinicInfo.json');
+import Icon from "react-native-feather1s"
+
 let baseURL = 'https://us-central1-smiledental-273502.cloudfunctions.net/';
 let imageURL = 'https://4smile.com/';
 
@@ -30,7 +27,7 @@ export default class AnnounceScreen extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        clinic_id : "74"
+        clinic_id : ClinicInfo.clinic_id
       })
     })
 
@@ -98,13 +95,6 @@ export default class AnnounceScreen extends React.Component {
   }
 
   render() {
-    if (this.state.isLoading) {
-      return (
-        <View style={s.loader}>
-          <ActivityIndicator size="large" color="#0c9" />
-        </View>
-      )
-    } 
     return (
       <Container style={s.container}>
         <Header style={s.headerContent}>
@@ -113,48 +103,45 @@ export default class AnnounceScreen extends React.Component {
               style={s.checkInEm}
               activeOpacity={1}>
             </TouchableOpacity>
-            <Text style={s.title}>Announce</Text>
+            <Text style={s.title}>Announcements</Text>
             <TouchableOpacity
-              style={s.moreIcon}
-              onPress={() => this.setState({ active: !this.state.active })}
-              activeOpacity={1}>
-              <Image source={more}/>
+              style={s.checkInEm}>
             </TouchableOpacity>
-            {this.state.active && 
-              <View style={s.shadowBtn}>
-                <TouchableOpacity
-                  style={s.profileBtn}
-                  onPress={() =>this.onProfile()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Profile</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={s.formBtn}
-                  onPress={() =>this.onWeb()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Form</Text>
-                </TouchableOpacity>
-              </View>
-            }
           </View>            
         </Header>
         <Content style={s.mainContainer}>
-          {/* <Text style={[s.ft17Gray, s.mb15]}>This Week</Text> */}
-          {this.state.announcements !=null ? 
+          {this.state.isLoading && <View style={{marginTop: 100}}>
+            <ActivityIndicator size="large" color="#0c9" />
+          </View>}
+
+          {this.state.announcements !=null && !this.state.isLoading &&
             <FlatList
                 data={this.state.announcements}
                 renderItem={(item) => this.renderItem(item)}
-            /> :
+                keyExtractor={(item) => item}
+            />
+          }
+          {this.state.announcements ==null && !this.state.isLoading &&
             <Text style={[s.txCenter, s.ft20Black]}>No data to display</Text>
           }
-        </Content>        
+        </Content>
         <Footer>
           <FooterTab style={s.footerContent}>
-            <Button onPress={this.onHome}><Image source={home} style={s.icon30}/></Button>
-            <Button onPress={this.onAnnounce}><Image source={announce1} style={s.icon30}/></Button>
-            <Button onPress={this.onCalendar}><Image source={calendar} style={s.icon30}/></Button>
-            <Button onPress={this.onChat}><Image source={chat} style={s.icon30}/></Button>
-            <Button onPress={this.onDoc}><Image source={doc} style={s.icon30}/></Button>
+          <Button onPress={this.onHome}>
+              <Icon name="home" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onAnnounce}>
+              <Icon name="flag" size={30} color={'rgba(37,175,217, 1)'} />
+            </Button>
+            <Button onPress={this.onCalendar}>
+              <Icon name="calendar" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onChat}>
+              <Icon name="message-circle" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onDoc}>
+              <Icon name="info" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
           </FooterTab>
         </Footer>
       </Container >

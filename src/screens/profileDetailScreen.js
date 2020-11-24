@@ -11,12 +11,37 @@ export default class ProfileDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      usersName : "",
+      phone : 0
     };
+    
+    // reload data after navgiation back
+    this.focusListener = this.props.navigation.addListener('willFocus', () => {  
+      this.getUserData();
+    });
   }
 
-  componentDidMount() {
-    
+  async componentDidMount() {
+    this.getUserData();
+  }
+
+  getUserData() {
+    let userFullname = "";
+    AsyncStorage.getItem('userData').then( async (res)=> {
+      let userData  = JSON.parse(res);
+      userFullname  = userData.firstName + "\ " + userData.lastName;
+      let userEmail = userData.email;
+      let phone     = userData.phone;
+      this.setState(
+        {usersName : userFullname,
+         email : userEmail,
+        phone : phone
+      });   
+    });
+  }
+
+  componentWillUnmount () {
+    this.focusListener.remove();
   }
 
   onLogout =()=> {
@@ -36,7 +61,7 @@ export default class ProfileDetail extends React.Component {
               activeOpacity={1}>
               <Image source={backBtn} style={s.backIcon}/>
             </TouchableOpacity>
-            <Text style={s.title}>Profile detail</Text>
+            <Text style={s.title}>Profile</Text>
             <View style={{width:15}}></View>
           </View>          
         </Header>
@@ -53,30 +78,23 @@ export default class ProfileDetail extends React.Component {
           <View style={{flexDirection: 'row', marginVertical:30}}>
             <View style={s.flex30}>
               <Text style={[s.ft15RegularBlack, s.mb10]}>Name</Text>
-              <Text style={[s.ft15RegularBlack, s.mb10]}>Username</Text>
               <Text style={[s.ft15RegularBlack, s.mb10]}>Email</Text>
               <Text style={[s.ft15RegularBlack, s.mb10]}>Phone</Text>
-              <Text style={[s.ft15RegularBlack, s.mb10]}>Password</Text>
             </View>
             <View style={s.flex70}>
-              <Text style={[s.ft14300Gray, s.mb10]}>Quinn Flair</Text>
-              <Text style={[s.ft14300Gray, s.mb10]}>quinnflair</Text>
-              <Text style={[s.ft14300Gray, s.mb10]}>quinn_flair@gmail.com</Text>
-              <Text style={[s.ft14300Gray, s.mb10]}>(000) 000-000</Text>
-              <Text style={[s.ft14300Gray, s.mb10]}>12345678</Text>
+              <Text style={[s.ft14300Gray, s.mb10]}>{this.state.usersName}</Text>
+              <Text style={[s.ft14300Gray, s.mb10]}>{this.state.email}</Text>
+              <Text style={[s.ft14300Gray, s.mb10]}>{this.state.phone}</Text>
             </View>
           </View>
-          <View style={s.splitLine}></View>
-          <TouchableOpacity
-              style={{marginVertical: 25}}
+          <View style={[styles.textCenter, s.w100]}>
+            <TouchableOpacity
+              style={[styles.btnActive]}
+              onPress={()=>this.onLogout()}
               activeOpacity={1}>
-              <Text style={s.ft17Gray}>More</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-              onPress={this.onLogout}
-              activeOpacity={1}>
-              <Text style={s.ft17Gray}>Log Out</Text>
-          </TouchableOpacity>
+              <Text style={s.activeTxt}>Log Out</Text>
+            </TouchableOpacity>
+          </View>
         </Content>
       </Container >
     );
@@ -84,5 +102,20 @@ export default class ProfileDetail extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+  textCenter: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  btnActive: {
+    height: 40,
+    backgroundColor: '#173147',
+    borderRadius: 8,
+    borderColor: '#173147',
+    borderWidth: 1,
+    marginBottom: 20,
+    width: '50%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 })

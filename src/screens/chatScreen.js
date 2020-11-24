@@ -1,15 +1,10 @@
 import React from 'react';
 import { Container, Header, Footer, FooterTab, Button, Content, Text } from 'native-base';
-import { View, Alert, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Asset, View, Alert, TouchableOpacity, StyleSheet, Image, CameraRoll } from 'react-native';
+import Icon from "react-native-feather1s"
 import AsyncStorage from '@react-native-community/async-storage';
-import { WebView } from 'react-native-webview';
 var s = require('../assets/css/styles');
-import more from '../assets/icons/more.png';
-import home from '../assets/icons/home.png';
-import announce from '../assets/icons/announce.png';
-import calendar from '../assets/icons/calendar.png';
-import chat1 from '../assets/icons/chat1.png';
-import doc from '../assets/icons/doc.png';
+
 import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 export default class ChatScreen extends React.Component {
@@ -36,25 +31,32 @@ export default class ChatScreen extends React.Component {
     return phone;
   };
 
-  async openChat(phone) {
+  async openChat(phone, patientFullName) {
     await InAppBrowser.close();
+    let phoneEncoded = phone.replace("+", "%2B");
+
+    console.log(phoneEncoded);
     try {
-      const url = 'https://us-central1-smiledental-273502.cloudfunctions.net/loadChat?uid='+ phone + '&user_name=test';
+      const queryString = escape("uid=" + phone + "&user_name=test");
+      //const baseURL = 'https://us-central1-smiledental-273502.cloudfunctions.net/loadChat?uid=' + escape(phone) + "&user_name=test";
+      //const url = baseURL;
+      const url = 'https://us-central1-smiledental-273502.cloudfunctions.net/loadChat?uid='+ phoneEncoded + '&user_name=' + patientFullName;
+      console.log(url);
       if (await InAppBrowser.isAvailable()) {
         const result = await InAppBrowser.open(url, {
           // iOS Properties
           dismissButtonStyle: 'close',
-          preferredBarTintColor: '#453AA4',
-          preferredControlTintColor: 'white',
+          preferredBarTintColor: '#FFFFFF',
+          preferredControlTintColor: 'black',
           readerMode: false,
           animated: true,
           modalPresentationStyle: 'fullScreen',
           //modalTransitionStyle: 'partialCurl',
-          modalEnabled: true,
+          modalEnabled: false,
           enableBarCollapsing: true,
           // Android Properties
           showTitle: true,
-          toolbarColor: '#6200EE',
+          toolbarColor: '#FFFFFF',
           secondaryToolbarColor: 'black',
           enableUrlBarHiding: true,
           enableDefaultShare: true,
@@ -83,8 +85,13 @@ export default class ChatScreen extends React.Component {
 
 
   async componentDidMount() {
-    AsyncStorage.getItem('userData').then( async (res)=>{
-      this.openChat(JSON.parse(res).phone);
+    AsyncStorage.getItem('userData').then( async (res)=> {
+      let userData      = JSON.parse(res);
+      let userFullname  = userData.firstName + "\ " + userData.lastName;
+      userFullname      = escape(userFullname);
+      let phone         = userData.phone;
+      this.openChat(phone, userFullname);
+      //this.openChatLocal();
     });
   }
 
@@ -133,37 +140,28 @@ export default class ChatScreen extends React.Component {
             </TouchableOpacity>
             <Text style={s.title}>Chat</Text>
             <TouchableOpacity
-              style={s.moreIcon}
-              onPress={() => this.setState({ active: !this.state.active })}
-              activeOpacity={1}>
-              <Image source={more}/>
+              style={s.checkInEm}>
             </TouchableOpacity>
-            {this.state.active && 
-              <View style={s.shadowBtn}>
-                <TouchableOpacity
-                  style={s.profileBtn}
-                  onPress={() =>this.onProfile()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Profile</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={s.formBtn}
-                  onPress={() =>this.onWeb()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Form</Text>
-                </TouchableOpacity>
-              </View>
-            }
           </View>            
         </Header>
         <Container></Container>
         <Footer>
           <FooterTab style={s.footerContent}>
-            <Button onPress={this.onHome}><Image source={home} style={s.icon30}/></Button>
-            <Button onPress={this.onAnnounce}><Image source={announce} style={s.icon30}/></Button>
-            <Button onPress={this.onCalendar}><Image source={calendar} style={s.icon30}/></Button>
-            <Button onPress={this.onChat}><Image source={chat1} style={s.icon30}/></Button>
-            <Button onPress={this.onDoc}><Image source={doc} style={s.icon30}/></Button>
+          <Button onPress={this.onHome}>
+              <Icon name="home" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onAnnounce}>
+              <Icon name="flag" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onCalendar}>
+              <Icon name="calendar" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onChat}>
+              <Icon name="message-circle" size={30} color={'rgba(37,175,217, 1)'} />
+            </Button>
+            <Button onPress={this.onDoc}>
+              <Icon name="info" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
           </FooterTab>
         </Footer>
       </Container >

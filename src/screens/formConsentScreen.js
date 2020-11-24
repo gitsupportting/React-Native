@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  ActivityIndicator,
   View,
   TouchableOpacity,
   Image,
@@ -13,7 +14,7 @@ import {Container, Header, Content} from 'native-base'
 import backBtn from '../assets/icons/backBtn.png'
 var s = require('../assets/css/styles');
 let baseURL = 'https://us-central1-smiledental-273502.cloudfunctions.net/';
-import logoBase64 from "../assets/logo";
+var ClinicInfo = require('../config/ClinicInfo.json');
 
 export default class FormConsentScreen extends React.Component {
   constructor (props) {
@@ -23,6 +24,7 @@ export default class FormConsentScreen extends React.Component {
 
   init = () => {
     this.state = {
+      isLoading : false,
       patient_consent_signature : "",
       patient_consent_signature_date : "",
       patient_consent_signature_relationship : "",
@@ -36,6 +38,7 @@ export default class FormConsentScreen extends React.Component {
   }
 
   onSumbmit = () => {
+    this.setState({ isLoading : true});
     const {
       patient_consent_signature,
       patient_consent_signature_date,
@@ -51,9 +54,9 @@ export default class FormConsentScreen extends React.Component {
     this.formData.patient_consent_signature2 = patient_consent_signature2;
     this.formData.patient_consent_signature2_date = patient_consent_signature2_date;
     this.formData.patient_consent_signature2_relationship = patient_consent_signature2_relationship;
-    this.formData.clinic_id = 74,
-    this.formData.clinic_email = "hafez@4smile.com",
-    this.formData.clinic_logo = logoBase64
+    this.formData.clinic_id = ClinicInfo.clinic_id,
+    this.formData.clinic_email = ClinicInfo.clinic_email,
+    this.formData.clinic_logo = ClinicInfo.clinic_logo
 
     AsyncStorage.getItem('userData').then(async res => {
       this.formData.sender_id =  JSON.parse(res).phone;
@@ -84,23 +87,46 @@ export default class FormConsentScreen extends React.Component {
   }
 
   render () {
-    return (
-      <KeyboardAvoidingView style={s.container}>
-        <Header
-          style={{
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            backgroundColor: '#ffffff',
-          }}>
-          <TouchableOpacity
-            onPress={this.onBack}
-            activeOpacity={1}>
-            <Image source={backBtn} style={s.backIcon} />
-          </TouchableOpacity>
+    if (this.state.isLoading) {
+      return (
+        <KeyboardAvoidingView style={s.container}>
+        <Header style={s.headerContent}>
+          <View style={s.spaceBetween}>
+            <TouchableOpacity onPress={this.onBack} activeOpacity={1}>
+              <Image source={backBtn} style={s.backIcon} />
+            </TouchableOpacity>
+            <Text style={s.title}>Consent For Services</Text>
+            <TouchableOpacity
+              style={{width: 10}}
+              activeOpacity={1}>
+            </TouchableOpacity>
+          </View>
         </Header>
         <Content style={s.mainContainer}>
-          <Text style={[s.mb20, s.ft20Black]}>Consent For Services</Text>
-          <View style={[styles.itemWrap, s.mt20]}>
+      <View style={{marginTop: 100, alignItems: "center"}}>
+          <Text>Uploading Form</Text>
+          <ActivityIndicator size="large" color="#0c9" />
+      </View>
+      </Content>
+      </KeyboardAvoidingView>
+    )}
+
+    return (
+      <KeyboardAvoidingView style={s.container}>
+        <Header style={s.headerContent}>
+          <View style={s.spaceBetween}>
+            <TouchableOpacity onPress={this.onBack} activeOpacity={1}>
+              <Image source={backBtn} style={s.backIcon} />
+            </TouchableOpacity>
+            <Text style={s.title}>Consent For Services</Text>
+            <TouchableOpacity
+              style={{width: 10}}
+              activeOpacity={1}>
+            </TouchableOpacity>
+          </View>
+        </Header>
+        <Content style={s.mainContainer}>
+          <View style={[styles.itemWrap]}>
             <Text style={[s.ft15RegularBlack, s.flex30]}>Signature</Text>
             <TextInput
               onChangeText={patient_consent_signature =>

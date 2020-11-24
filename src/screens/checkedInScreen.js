@@ -9,6 +9,7 @@ import {
   Content,
 } from 'native-base'
 import {
+  ActivityIndicator,
   View,
   TouchableOpacity,
   Image,
@@ -17,17 +18,12 @@ import {
 } from 'react-native'
 import Moment from 'moment'
 import AsyncStorage from '@react-native-community/async-storage'
-import logoBase64 from "../assets/logo";
-import more from '../assets/icons/more.png'
-import home from '../assets/icons/home.png'
-import announce from '../assets/icons/announce.png'
-import calendar from '../assets/icons/calendar.png'
-import chat1 from '../assets/icons/chat1.png'
-import doc from '../assets/icons/doc.png'
+import Icon from "react-native-vector-icons/Ionicons";
+var ClinicInfo = require('../config/ClinicInfo.json');
 
-// import { WebView } from 'react-native-webview';
 var s = require('../assets/css/styles')
 let baseURL = 'https://us-central1-smiledental-273502.cloudfunctions.net/'
+
 
 export default class CheckedInScreen extends React.Component {
   constructor (props) {
@@ -41,8 +37,9 @@ export default class CheckedInScreen extends React.Component {
       .format('MM/DD/YYYY')
       .toString()
     this.state = {
+      isLoading: false,
       active: false,
-      clinic_id: 74,
+      clinic_id: ClinicInfo.clinic_id,
       form_fill_date: today,
       patient_dob: '',
       patient_full_name: '',
@@ -57,11 +54,12 @@ export default class CheckedInScreen extends React.Component {
       covid_symptom_respiratory_symptoms: 'YES',
       covid_symptom_coughing: 'YES',
       covid_symptom_sore_throat: 'YES',
-      clinic_logo: logoBase64,
+      clinic_logo: ClinicInfo.clinic_logo,
     }
   }
 
   onSumbmit = () => {
+    this.setState({ isLoading : true});
     AsyncStorage.getItem('userData').then(async res => {
       await fetch(baseURL + 'covidForm', {
         method: 'POST',
@@ -70,7 +68,8 @@ export default class CheckedInScreen extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          clinic_id: '74',
+          clinic_id: ClinicInfo.clinic_id,
+          clinic_email : ClinicInfo.clinic_email,
           sender_id: JSON.parse(res).phone,
           form_fill_date: this.state.form_fill_date,
           patient_dob: this.state.patient_dob,
@@ -152,6 +151,32 @@ export default class CheckedInScreen extends React.Component {
   }
 
   render () {
+    if (this.state.isLoading) {
+      return (
+    <Container style={s.container}>
+    <Header style={s.headerContent}>
+      <View style={s.spaceBetween}>
+        <TouchableOpacity
+          style={s.checkInEm}
+          activeOpacity={1}
+          onPress={() => this.onHome()}>
+          <Text>Done</Text>
+        </TouchableOpacity>
+        <Text style={s.title}>COVID-19 CHECK</Text>
+        <TouchableOpacity
+        style={s.checkInEm}
+        />
+      </View>
+    </Header>
+    <Content style={s.mainContainer}>
+      <View style={{marginTop: 100, alignItems: "center"}}>
+          <Text>Uploading Form</Text>
+          <ActivityIndicator size="large" color="#0c9" />
+      </View>
+      </Content>
+      </Container>
+    )}
+
     return (
       <Container style={s.container}>
         <Header style={s.headerContent}>
@@ -164,33 +189,14 @@ export default class CheckedInScreen extends React.Component {
             </TouchableOpacity>
             <Text style={s.title}>COVID-19 CHECK</Text>
             <TouchableOpacity
-              style={s.moreIcon}
-              onPress={() => this.setState({active: !this.state.active})}
-              activeOpacity={1}>
-              <Image source={more} />
-            </TouchableOpacity>
-            {this.state.active && (
-              <View style={s.shadowBtn}>
-                <TouchableOpacity
-                  style={s.profileBtn}
-                  onPress={() => this.onProfile()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Profile</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={s.formBtn}
-                  onPress={() => this.onWeb()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Form</Text>
-                </TouchableOpacity>
-              </View>
-            )}
+            style={s.checkInEm}
+            />
           </View>
         </Header>
         <Content style={s.mainContainer}>
           <Image 
             style={[s.ImageIconStyle_logo, styles.alignCenter]}
-            source={{uri: logoBase64}} 
+            source={{uri: ClinicInfo.clinic_logo}} 
           />
           <View style={[s.splitLine, s.mv15]}></View>
           <View style={[styles.itemWrap]}>
@@ -216,20 +222,20 @@ export default class CheckedInScreen extends React.Component {
           </View>
           <View style={[s.splitLine, s.mb15]}></View>
           <View style={s.mv25}>
-            <Text style={[s.ft14BoldBlack, s.txCenter, s.mb15]}>
-              <Text style={{width: '60%'}}>
-                Please Check YES or NO on the following questions:
-              </Text>
-            </Text>
             <Text style={[s.ft14300Gray, s.txCenter, s.mb15]}>
               <Text style={{width: '60%'}}>
+                Please Check YES or NO on the following:
+              </Text>
+            </Text>
+            <Text style={[s.ft14300Gray, s.txCenter]}>
+              <Text style={{width: '80%'}}>
                 HAVE YOU OR ANYONE YOU ARE IN CLOSE CONTACT WITH
               </Text>
             </Text>
           </View>
           <View style={[s.splitLine]}></View>
           <View style={s.mv25}>
-            <Text style={s.ft14300Gray}>for COVID-19 in the last 30 days?</Text>
+            <Text style={s.ft14300Gray}>Been in contact with anyone that has been diagnosed or is being monitored by CDC for COVID-19 in the last 30 days?</Text>
             <View style={styles.btnGroup}>
               <TouchableOpacity
                 style={
@@ -260,7 +266,7 @@ export default class CheckedInScreen extends React.Component {
           <View style={[s.splitLine]}></View>
           <View style={s.mv25}>
             <Text style={s.ft14300Gray}>
-              Traveled in out of the country in the past 60 days?
+              Traveled in or out of the country in the past 60 days?
             </Text>
             <View style={styles.btnGroup}>
               <TouchableOpacity
@@ -571,23 +577,24 @@ export default class CheckedInScreen extends React.Component {
             activeOpacity={1}>
             <Text style={styles.activeTxt}>Submit</Text>
           </TouchableOpacity>
+          
         </Content>
         <Footer>
           <FooterTab style={s.footerContent}>
-            <Button onPress={this.onHome}>
-              <Image source={home} style={s.icon30} />
+          <Button onPress={this.onHome}>
+              <Icon name="ios-home-outline" size={25} />
             </Button>
             <Button onPress={this.onAnnounce}>
-              <Image source={announce} style={s.icon30} />
+              <Icon name="ios-flag" size={30} />
             </Button>
             <Button onPress={this.onCalendar}>
-              <Image source={calendar} style={s.icon30} />
+              <Icon name="ios-calendar-outline" size={30} />
             </Button>
             <Button onPress={this.onChat}>
-              <Image source={chat1} style={s.icon30} />
+              <Icon name="ios-chatbubble-ellipses-outline" size={30} />
             </Button>
             <Button onPress={this.onDoc}>
-              <Image source={doc} style={s.icon30} />
+              <Icon name="ios-information-circle-outline" size={30} />
             </Button>
           </FooterTab>
         </Footer>

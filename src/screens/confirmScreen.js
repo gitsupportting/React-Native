@@ -3,6 +3,7 @@ import { View, TouchableOpacity, StyleSheet, TextInput, Text, Image, ActivityInd
 import AsyncStorage from '@react-native-community/async-storage';
 var s = require('../assets/css/styles');
 import backBtn from '../assets/icons/backBtn.png';
+var ClinicInfo = require('../config/ClinicInfo.json');
 let baseURL = 'https://us-central1-smiledental-273502.cloudfunctions.net/'
 
 export default class ConfirmScreen extends React.Component {
@@ -39,7 +40,7 @@ export default class ConfirmScreen extends React.Component {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              "clinic_id" : "74",
+              "clinic_id" : ClinicInfo.clinic_id,
               "patient_phone_number" : this.state.phone
             })
           })
@@ -53,6 +54,7 @@ export default class ConfirmScreen extends React.Component {
                   let userData = {
                     'firstName': item.first_name,
                     'lastName': item.last_name,
+                    'email' : item.email,
                     'phone': item.phone
                   }
                   AsyncStorage.setItem('userData', JSON.stringify(userData)).then(() => {
@@ -84,10 +86,11 @@ export default class ConfirmScreen extends React.Component {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization' : '02bbac43cf01b72132c9996a2b485ca48fc10afdf12b583d7ee198b829079f64'
               },
               body: JSON.stringify({
-                clinic_id : "74",
+                clinic_id : ClinicInfo.clinic_id,
                 patient_first_name : firstName,
                 patient_last_name : lastName, 
                 patient_phone_number : phone,
@@ -102,6 +105,7 @@ export default class ConfirmScreen extends React.Component {
                   let userData = {
                     'firstName': firstName,
                     'lastName': lastName,
+                    'email' : email,
                     'phone': phone
                   }
                   AsyncStorage.setItem('userData', JSON.stringify(userData)).then(() => {

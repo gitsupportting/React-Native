@@ -12,33 +12,66 @@ export default class LoginScreen extends React.Component {
       isLoading: false
     };
   }
+  
+  _prependedPhoneNumber = () => {
+    var phoneNumber=this.state.phone;
+    var phonePrefix = phoneNumber.substring(0,1);
+    // if number starts with 1, add +
+    if (phonePrefix == "1") {
+      phoneNumber = "+" + phoneNumber;
+    }
+
+    phonePrefix = phoneNumber.substring(0,2);
+    
+    // if number doesn't start with +1, add +1
+    if (phonePrefix != "+1")
+    {
+      phoneNumber = "+1" + phoneNumber;;
+    }
+
+    return phoneNumber;
+  }
 
   validatePhoneNumber = () => {
-    return this.state.phone && this.state.phone.length>0 ? true : false;
+    var validated = false;
+    var validatedPhoneNumber = "";
+    var phoneNumber = this.state.phone;
+
+    if (this.state.phone && this.state.phone.length > 0)
+    {
+        console.log(this.state.phone);
+        validated=true;
+    }
+
+    return validated;
   }
 
   onSendCode =async()=> {
     this.setState({isLoading: true});
-    if (this.validatePhoneNumber()) {
-      auth()
-        .signInWithPhoneNumber(this.state.phone)
-        .then(confirmResult => {
-          this.setState({ 
-            confirmResult: confirmResult,
-            isLoading: false
-          }, ()=>{
-            this.props.navigation.navigate('Confirm', {phone: this.state.phone, confirmResult: this.state.confirmResult, fromLogin: true});
-          });
-        })
-        .catch(error => {
-          alert(error.message);
-          this.setState({isLoading: false});
-          console.log(error)
-        });
-    } else {
-      this.setState({isLoading: false})
-      alert('Invalid Phone Number')
-    }
+    prefixedPhoneNumber = this._prependedPhoneNumber();
+
+    this.setState({ phone : prefixedPhoneNumber }, () => {
+        if (this.validatePhoneNumber()) {
+          auth()
+            .signInWithPhoneNumber(this.state.phone)
+            .then(confirmResult => {
+              this.setState({ 
+                confirmResult: confirmResult,
+                isLoading: false
+              }, ()=>{
+                this.props.navigation.navigate('Confirm', {phone: this.state.phone, confirmResult: this.state.confirmResult, fromLogin: true});
+              });
+            })
+            .catch(error => {
+              alert(error.message);
+              this.setState({isLoading: false});
+              console.log(error)
+            });
+        } else {
+          this.setState({isLoading: false})
+          alert('Invalid Phone Number')
+        }
+      });
   }
 
   onSignup =()=> {

@@ -1,16 +1,14 @@
 import React from 'react';
 import { Container, Header, Footer, FooterTab, Button, Content, Text } from 'native-base';
 import { Dimensions, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import Icon from "react-native-feather1s"
 import  MapView,{Marker} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import openMap from 'react-native-open-maps';
 let deviceWidth = Dimensions.get('window').width;
 var s = require('../assets/css/styles');
-import more from '../assets/icons/more.png';
-import home from '../assets/icons/home.png';
-import announce from '../assets/icons/announce.png';
-import calendar from '../assets/icons/calendar.png';
-import chat from '../assets/icons/chat.png';
-import doc1 from '../assets/icons/doc1.png';
+var ClinicInfo = require('../config/ClinicInfo.json');
+
 
 export default class DocScreen extends React.Component {
 
@@ -87,8 +85,12 @@ export default class DocScreen extends React.Component {
     this.props.navigation.navigate('Doc', {});
   }
 
-  _getDirections = () => {
+  onCheckIn =()=> {
+    this.props.navigation.navigate('CheckedIn', {});
+  }
 
+  _getDirections() {
+    openMap({ latitude: ClinicInfo.clinic_latitude, longitude: ClinicInfo.clinic_longitude });
   }
 
   render() {
@@ -100,32 +102,21 @@ export default class DocScreen extends React.Component {
               style={s.checkInEm}
               activeOpacity={1}>
             </TouchableOpacity>
-            <Text style={s.title}>Laguna Dental Center</Text>
-            <TouchableOpacity
-              style={s.moreIcon}
-              onPress={() => this.setState({ active: !this.state.active })}
-              activeOpacity={1}>
-              <Image source={more}/>
-            </TouchableOpacity>
-            {this.state.active && 
-              <View style={s.shadowBtn}>
-                <TouchableOpacity
-                  style={s.profileBtn}
-                  onPress={() =>this.onProfile()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Profile</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={s.formBtn}
-                  onPress={() =>this.onWeb()}
-                  activeOpacity={1}>
-                  <Text style={s.ft15RegularBlack}>Form</Text>
-                </TouchableOpacity>
-              </View>
-            }
+            <Text style={s.title}>Clinic Info</Text>
+            <Button onPress={this.onProfile} style={s.checkInEm, {backgroundColor: "#FFFFFF"}}>
+                <Icon name="user" size={30} />
+              </Button>
           </View>            
         </Header>
         <Content style={s.margin20}>
+        <View style={[styles.textCenter, s.w100]}>
+            <TouchableOpacity
+              style={[styles.btnActive]}
+              onPress={()=>this.onCheckIn()}
+              activeOpacity={1}>
+              <Text style={s.activeTxt}>Mobile Check-In</Text>
+            </TouchableOpacity>
+          </View>
           <View style={[styles.textCenter, s.w100]}>
             <TouchableOpacity
               style={[styles.btnActive]}
@@ -154,18 +145,27 @@ export default class DocScreen extends React.Component {
             >
             </MapView>}
           </View>
-          <Text style={[s.ft20Black, styles.mb15]}>Laguna Dental Center</Text>
+          <Text style={[s.ft20Black, styles.mb15]}>{ClinicInfo.clinic_name}</Text>
+          {/* <View style={[styles.textCenter, s.w100]}>
+            <TouchableOpacity
+              style={[styles.btnActive]}
+              onPress={()=>this._getDirections()}
+              activeOpacity={1}>
+              <Text style={s.activeTxt}>Get Directions</Text>
+            </TouchableOpacity>
+          </View> */}
           <Text style={s.ft14300Gray}>
-            24881 Alicia Pkwy, Suite H Laguna Hills, CA 92653 
+            4000 MacArthur Blvd, 6th Floor, Newport Beach, CA 92660
           </Text>
           <Text style={s.ft14300Gray}>
-          (949) 707-5273 
+          
           </Text>
-          <View>
-          <Button
-          onPress={this._getDirections}
-          title="Get Directions" />
-          </View>
+          <Text style={s.ft14300Gray}>
+          (800) 500-4506 
+          </Text>
+          <Text style={s.ft14300Gray}>
+          
+          </Text>
           <Text style={s.ft14300Gray}>
           Our team of experienced and professional dentists brings over 20 years of experience in dental care to enhance your oral health. 
           </Text>
@@ -191,18 +191,26 @@ export default class DocScreen extends React.Component {
             <Text style={[s.ft14300Gray, s.flex70]}>8am-5pm</Text>
           </View>          
 
-          <Text style={[s.title, styles.mv15]}>Dr. Payam Ataii</Text>
-          <Text style={s.ft14300Gray}>Expert Dentist Dr. Payam C. Ataii has been treating patients with over two decades of clinical experience. His experience covers a wide range of dentistry such as: oral surgery, endodontics, pedodontics, periodontics, cosmetic dentistry, and most recently Laser Dentistry.</Text>
-          <Text style={[s.title, styles.mv15]}>Dr. Jeremy Owyoung</Text>
-          <Text style={s.ft14300Gray}>Dr. Owyoung Dr. Jeremy Owyoung graduated from the University of California, San Diego (UCSD) with a Bachelor of Science degree in Biochemistry / Cell Biology and Management Science. He received his Doctor of Dental Surgery from the University of Southern California School of Dentistry (USC).</Text>
+          <Text style={[s.title, styles.mv15]}>Dr. John Smith, DDS</Text>
+          <Text style={s.ft14300Gray}>Expert Dentist Dr. John Smith has been treating patients with over two decades of clinical experience. His experience covers a wide range of dentistry such as: oral surgery, endodontics, pedodontics, periodontics and cosmetic dentistry.</Text>
         </Content>
         <Footer>
           <FooterTab style={s.footerContent}>
-            <Button onPress={this.onHome}><Image source={home} style={s.icon30}/></Button>
-            <Button onPress={this.onAnnounce}><Image source={announce} style={s.icon30}/></Button>
-            <Button onPress={this.onCalendar}><Image source={calendar} style={s.icon30}/></Button>
-            <Button onPress={this.onChat}><Image source={chat} style={s.icon30}/></Button>
-            <Button onPress={this.onDoc}><Image source={doc1} style={s.icon30}/></Button>
+          <Button onPress={this.onHome}>
+              <Icon name="home" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onAnnounce}>
+              <Icon name="flag" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onCalendar}>
+              <Icon name="calendar" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onChat}>
+              <Icon name="message-circle" size={30} color={'rgba(0, 0, 0, .80)'} />
+            </Button>
+            <Button onPress={this.onDoc}>
+              <Icon name="info" size={30} color={'rgba(37,175,217, 1)'} />
+            </Button>
           </FooterTab>
         </Footer>
       </Container >

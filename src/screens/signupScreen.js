@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage';
 import DatePicker from 'react-native-datepicker'
 import { View, TouchableOpacity, StyleSheet, TextInput, Text, KeyboardAvoidingView, ActivityIndicator } from 'react-native';
 import auth from '@react-native-firebase/auth';
 var s = require('../assets/css/styles');
+var ClinicInfo = require('../config/ClinicInfo.json');
 
 export default class SignupScreen extends React.Component {
+
+  
   constructor(props) {
 
     super(props);
@@ -18,6 +21,7 @@ export default class SignupScreen extends React.Component {
       phone: this.props.navigation.state.params.phone,
       isLoading: false
     };
+
   }
 
   onSignup = async () => {
@@ -53,10 +57,11 @@ export default class SignupScreen extends React.Component {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization' : '02bbac43cf01b72132c9996a2b485ca48fc10afdf12b583d7ee198b829079f64'
         },
         body: JSON.stringify({
-          clinic_id : "74",
+          clinic_id : ClinicInfo.clinic_id,
           patient_first_name : firstName,
           patient_last_name : lastName, 
           patient_phone_number : phone,
@@ -71,6 +76,7 @@ export default class SignupScreen extends React.Component {
             let userData = {
               'firstName': firstName,
               'lastName': lastName,
+              'email' : email,
               'phone': phone
             }
             AsyncStorage.setItem('userData', JSON.stringify(userData)).then(() => {
@@ -172,10 +178,13 @@ export default class SignupScreen extends React.Component {
                 lineHeight: 19,
                 color: '#173147',
                 backgroundColor: '#fff',
+              },
+              datePicker: {
+                justifyContent:'center'
               }
             }}
             onDateChange={(birthday) => {this.setState({birthday: birthday})}}
-          />
+          /> 
           <Text style={[s.ft12Black, s.mv15, styles.textLeft]}>Phone</Text>
           <TextInput
             placeholder="phone number"

@@ -99,20 +99,19 @@ export default class FormSpouseScreen extends React.Component {
   render () {
     return (
       <KeyboardAvoidingView style={s.container}>
-        <Header
-          style={{
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            backgroundColor: '#ffffff',
-          }}>
-          <TouchableOpacity
-            onPress={this.onBack}
-            activeOpacity={1}>
-            <Image source={backBtn} style={s.backIcon} />
-          </TouchableOpacity>
+        <Header style={s.headerContent}>
+          <View style={s.spaceBetween}>
+            <TouchableOpacity onPress={this.onBack} activeOpacity={1}>
+              <Image source={backBtn} style={s.backIcon} />
+            </TouchableOpacity>
+            <Text style={s.title}>Spouse or Responsible Party</Text>
+            <TouchableOpacity
+              style={{width: 10}}
+              activeOpacity={1}>
+            </TouchableOpacity>
+          </View>
         </Header>
         <Content style={s.mainContainer}>
-          <Text style={[s.mb20, s.ft20Black]}>Spouse or Responsible Party Information</Text>
           <View style={s.mv25}>
             <Text style={s.ft14300Gray}>
               Self

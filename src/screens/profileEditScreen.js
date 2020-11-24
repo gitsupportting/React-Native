@@ -20,6 +20,36 @@ export default class ProfileEdit extends React.Component {
     if (deviceWidth/deviceHeight <= 0.563 ){
       this.setState({ Islong : true });
     };
+
+    AsyncStorage.getItem('userData').then( async (res)=> {
+      let userData      = JSON.parse(res);
+      userFullname  = userData.firstName + "\ " + userData.lastName;
+      let userEmail = userData.email;
+      let phone         = userData.phone;
+      this.setState(
+        {
+          usersName : userFullname,
+          email : userEmail,
+          phone : phone
+        });
+    });
+  }
+
+  onSave = () => {
+    // TODO : update server with changes to patient data
+    let names = this.state.usersName.split(' ');
+
+    let userData = {
+      'usersName': this.state.usersName,
+      'firstName' : names[0],
+      'lastName' : names[1],
+      'email': this.state.email,
+      'phone' : this.state.phone
+    }
+
+    AsyncStorage.setItem('userData', JSON.stringify(userData)).then(() => {
+      this.props.navigation.goBack();
+    });
   }
 
   onLogout =()=> {
@@ -47,7 +77,7 @@ export default class ProfileEdit extends React.Component {
           <View style={s.spaceBetween}>
             <Text style={s.ft17Gray}>Account</Text>
             <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
+              onPress={this.onSave}
               style={{marginRight:5}}
               activeOpacity={1}>
               <Text style={s.ft14300Gray}>Save</Text>
@@ -58,20 +88,9 @@ export default class ProfileEdit extends React.Component {
               <Text style={[s.ft15RegularBlack, s.flex30]}>Name</Text>
               <TextInput
                 placeholder="Name"
-                onChangeText={(name) => this.setState({ name })}
+                onChangeText={(usersName) => this.setState({ usersName })}
                 autoCapitalize='none'
-                value={this.state.name}
-                style={s.flex70}
-                style={ this.state.Islong ? styles.inputText: styles.inputText_}
-              />  
-            </View>
-            <View style={[styles.itemWrap]}>
-              <Text style={[s.ft15RegularBlack, s.flex30]}>Username</Text>
-              <TextInput
-                placeholder="Username"
-                onChangeText={(username) => this.setState({ username })}
-                autoCapitalize='none'
-                value={this.state.username}
+                value={this.state.usersName}
                 style={s.flex70}
                 style={ this.state.Islong ? styles.inputText: styles.inputText_}
               />  
@@ -98,31 +117,10 @@ export default class ProfileEdit extends React.Component {
                 style={ this.state.Islong ? styles.inputText: styles.inputText_}
               />  
             </View>
-            <View style={[styles.itemWrap]}>
-              <Text style={[s.ft15RegularBlack, s.flex30]}>Password</Text>
-              <TextInput
-                placeholder="Password"
-                onChangeText={(password) => this.setState({ password })}
-                autoCapitalize='none'
-                value={this.state.password}
-                style={s.flex70}
-                style={ this.state.Islong ? styles.inputText: styles.inputText_}
-              />  
-            </View>
           </View>
           <View style={s.splitLine}></View>
-          <TouchableOpacity
-              style={{marginVertical: 25}}
-              activeOpacity={1}>
-              <Text style={s.ft17Gray}>More</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-              onPress={this.onLogout}
-              activeOpacity={1}>
-              <Text style={s.ft17Gray}>Log Out</Text>
-          </TouchableOpacity>
         </Content>
-      </Container >
+      </Container>
     );
   }
 }

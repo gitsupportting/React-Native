@@ -248,20 +248,19 @@ export default class FormHealthScreen extends React.Component {
   render () {
     return (
       <KeyboardAvoidingView style={s.container}>
-        <Header
-          style={{
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            backgroundColor: '#ffffff',
-          }}>
-          <TouchableOpacity
-            onPress={this.onBack}
-            activeOpacity={1}>
-            <Image source={backBtn} style={s.backIcon} />
-          </TouchableOpacity>
+        <Header style={s.headerContent}>
+          <View style={s.spaceBetween}>
+            <TouchableOpacity onPress={this.onBack} activeOpacity={1}>
+              <Image source={backBtn} style={s.backIcon} />
+            </TouchableOpacity>
+            <Text style={s.title}>Heath Information</Text>
+            <TouchableOpacity
+              style={{width: 10}}
+              activeOpacity={1}>
+            </TouchableOpacity>
+          </View>
         </Header>
         <Content style={s.mainContainer}>
-          <Text style={[s.mb20, s.ft20Black]}>Heath Information</Text>
           <View style={[styles.itemWrap]}>
             <Text style={[s.ft15RegularBlack, s.flex40]}>Date of Last Dental Vist</Text>
             <TextInput
