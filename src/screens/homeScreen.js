@@ -1,18 +1,15 @@
 import React from 'react';
 import { Container, Header, Footer, FooterTab, Button, Text, Content } from 'native-base';
-import { View, TouchableOpacity, StyleSheet, Image, BackHandler, Dimensions, ImageBackground } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, BackHandler, Dimensions, ImageBackground } from 'react-native';
 import Icon from "react-native-feather1s"
 import { FlatGrid } from 'react-native-super-grid';
-let deviceHeight = Dimensions.get('window').height;
 let deviceWidth = Dimensions.get('window').width;
 var s = require('../assets/css/styles');
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {  
-      active: false
-    };
+    
   }
 
   componentDidMount() {
@@ -73,7 +70,7 @@ export default class HomeScreen extends React.Component {
               style={s.checkIn}
               onPress={()=>this.onCheckIn()}
               activeOpacity={1}>
-              <Text style={s.title}>CheckedIn</Text>
+              <Text style={s.ft15RegularBlack}>Check-In</Text>
             </TouchableOpacity>
             <Text style={s.title}>Home</Text>
             <Button onPress={this.onProfile} style={s.checkInEm, {backgroundColor: "#FFFFFF"}}>
@@ -123,6 +120,6 @@ const styles = StyleSheet.create({
   imgBackground: {
     width: '100%',
     height: '100%',
-    flex: 1 
+    flex: 1,
   },
 })

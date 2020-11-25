@@ -34,6 +34,9 @@ module.exports = StyleSheet.create({
     backgroundColor: '#f1f1f1',
     borderRadius: 20,
     fontSize: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   checkInEm: {
